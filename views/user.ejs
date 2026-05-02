@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пользователь - NODE js</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <%- include ('blocks/header') -%>
+
+    <!-- Main -->
+    <main>
+        <div class="user-profile">
+            <h1>Страница Пользователя: <%= user %></h1>
+
+            <% if (user==='admin' ) { %>
+                <h2>Добро пожаловать, администратор!</h2>
+                <p>У вас есть полный доступ к сайту.</p>
+            <% } else { %>
+                <div class="user-welcome">
+                    <p>Приветствую тебя, <strong><%= user %></strong>! Я рад, что ты решил посетить мой сайт, посвященный Node.js.</p>
+                </div>
+                
+                <h2>Твои хобби:</h2>
+                <ul class="hobbies-list">
+                    <% hobbies.forEach((hobby)=> { %>
+                        <li><%= hobby %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+
+            <a href="/about" class="back-link">О нас</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <%- include ('blocks/footer') -%>
+</body>
+
+</html>
